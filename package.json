@@ -1,0 +1,42 @@
+{
+  "name": "s4apitestproj",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.15.7",
+    "@cap-js/hana": "^2.3.4",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9",
+    "cds-swagger-ui-express": "^0.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "travel_metadata": {
+        "kind": "odata-v2",
+        "model": "srv/external/travel_metadata",
+        "[development]": {
+          "credentials": {
+            "destination": "RJTechSphere"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "RJTechSphere"
+          }
+        }
+      }
+    }
+  }
+}
