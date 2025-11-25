@@ -5,17 +5,20 @@
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.15.7",
     "@cap-js/hana": "^2.3.4",
-    "@sap-cloud-sdk/connectivity": "^4",
-    "@sap-cloud-sdk/http-client": "^4",
-    "@sap-cloud-sdk/resilience": "^4",
+    "@sap-cloud-sdk/connectivity": "^4.1.2",
+    "@sap-cloud-sdk/http-client": "^4.1.2",
+    "@sap-cloud-sdk/resilience": "^4.1.2",
+    "@sap-cloud-sdk/util": "^4.1.2",
     "@sap/cds": "^9",
+    "@sap/xssec": "^4",
     "cds-swagger-ui-express": "^0.10.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^4"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2"
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
   },
   "scripts": {
     "start": "cds-serve"
@@ -27,18 +30,13 @@
         "kind": "odata-v2",
         "model": "srv/external/travel_metadata",
         "csrf": true,
-        "[development]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
-          }
-        },
-        "[production]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
-          }
+        "credentials": {
+          "destination": "RJTechSphere",
+          "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
         }
+      },
+      "[production]": {
+        "auth": "xsuaa"
       }
     }
   }

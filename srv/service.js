@@ -5,7 +5,9 @@ module.exports = async (srv) => {
     const { Travel } = srv.entities
 
     srv.on(['READ'], Travel, async (req) => {
-        let TravelRequestsQuery = SELECT.from(req.query.SELECT.from).limit(req.query.SELECT.limit);
+        // let TravelRequestsQuery = SELECT.from(req.query.SELECT.from).limit(req.query.SELECT.limit);
+        let TravelRequestsQuery = SELECT.from(req.query.SELECT.from).limit(10);
+       
         let TravelRequestsResult = await externalService.run(TravelRequestsQuery);
         return TravelRequestsResult;
 
