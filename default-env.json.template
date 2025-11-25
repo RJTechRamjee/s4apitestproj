@@ -3,7 +3,7 @@
     "destination": [
       {
         "label": "destination",
-        "name": "s4apitestproj-destination",
+        "name": "<YOUR_DESTINATION_SERVICE_NAME>",
         "tags": ["destination", "conn", "connsvc"],
         "credentials": {
           "clientid": "<YOUR_DESTINATION_CLIENT_ID>",
@@ -16,7 +16,7 @@
     "connectivity": [
       {
         "label": "connectivity",
-        "name": "s4apitestproj-connectivity",
+        "name": "<YOUR_CONNECTIVITY_SERVICE_NAME>",
         "tags": ["connectivity", "conn", "connsvc"],
         "credentials": {
           "clientid": "<YOUR_CONNECTIVITY_CLIENT_ID>",
@@ -30,7 +30,7 @@
     "xsuaa": [
       {
         "label": "xsuaa",
-        "name": "s4apitestproj-xsuaa",
+        "name": "<YOUR_XSUAA_SERVICE_NAME>",
         "tags": ["xsuaa"],
         "credentials": {
           "clientid": "<YOUR_XSUAA_CLIENT_ID>",

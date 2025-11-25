@@ -111,11 +111,15 @@ If you encounter timeout errors when trying to access the S4HANA OData service:
 4. **Check bindings** - Verify that both destination and connectivity services are bound
 5. **Profile mode** - Ensure you're running with `--profile hybrid`
 
-#### Connection Details
+#### Connection Details (Project-Specific Example)
+
+The following connection details are specific to this project's S4HANA setup:
 
 - **Virtual Host:** rjtechsphere.com:50001
 - **Protocol Translation:** HTTP (BTP) → HTTPS (S4HANA)
 - **OData Service Path:** /sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2
+
+> **Note:** Replace these values with your own S4HANA system's connection details as configured in your Cloud Connector.
 
 
 ## Learn More
