@@ -1,0 +1,44 @@
+{
+  "VCAP_SERVICES": {
+    "destination": [
+      {
+        "label": "destination",
+        "name": "s4apitestproj-destination",
+        "tags": ["destination", "conn", "connsvc"],
+        "credentials": {
+          "clientid": "<YOUR_DESTINATION_CLIENT_ID>",
+          "clientsecret": "<YOUR_DESTINATION_CLIENT_SECRET>",
+          "uri": "<YOUR_DESTINATION_URI>",
+          "url": "<YOUR_DESTINATION_AUTH_URL>"
+        }
+      }
+    ],
+    "connectivity": [
+      {
+        "label": "connectivity",
+        "name": "s4apitestproj-connectivity",
+        "tags": ["connectivity", "conn", "connsvc"],
+        "credentials": {
+          "clientid": "<YOUR_CONNECTIVITY_CLIENT_ID>",
+          "clientsecret": "<YOUR_CONNECTIVITY_CLIENT_SECRET>",
+          "onpremise_proxy_host": "<YOUR_ONPREMISE_PROXY_HOST>",
+          "onpremise_proxy_port": "<YOUR_ONPREMISE_PROXY_PORT>",
+          "url": "<YOUR_CONNECTIVITY_AUTH_URL>"
+        }
+      }
+    ],
+    "xsuaa": [
+      {
+        "label": "xsuaa",
+        "name": "s4apitestproj-xsuaa",
+        "tags": ["xsuaa"],
+        "credentials": {
+          "clientid": "<YOUR_XSUAA_CLIENT_ID>",
+          "clientsecret": "<YOUR_XSUAA_CLIENT_SECRET>",
+          "url": "<YOUR_XSUAA_URL>",
+          "xsappname": "<YOUR_XS_APP_NAME>"
+        }
+      }
+    ]
+  }
+}

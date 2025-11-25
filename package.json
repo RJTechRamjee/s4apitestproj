@@ -27,17 +27,9 @@
         "kind": "odata-v2",
         "model": "srv/external/travel_metadata",
         "csrf": true,
-        "[development]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
-          }
-        },
-        "[production]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
-          }
+        "credentials": {
+          "destination": "RJTechSphere",
+          "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
         }
       }
     }
