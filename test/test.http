@@ -1,0 +1,5 @@
+@host = http://localhost:4004
+@service = /odata/v4/agency
+
+### Get all Agencies
+GET {{host}}{{service}}/Agency
