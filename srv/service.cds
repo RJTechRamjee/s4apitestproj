@@ -1,5 +1,6 @@
-using { travel_metadata as external } from './external/travel_metadata';
+using { ZRK_API_AGENCY_V4 as externalAgency } from './external/ZRK_API_AGENCY_V4';
 
-service TravelService {
-    entity Travel as projection on external.Travel;
+
+service AgencyService {
+    entity Agency as projection on externalAgency.Agency;
 }
