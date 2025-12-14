@@ -29,23 +29,13 @@
       "index": true
     },
     "requires": {
-      "travel_metadata": {
-        "kind": "odata-v2",
-        "model": "srv/external/travel_metadata",
-        "csrf": true,
-        "credentials": {
-          "destination": "RJTechSphere",
-          "path": "/sap/opu/odata/DMO/UI_TRAVEL_PROC_M_O2"
-        }
-      },
       "[production]": {
         "auth": "xsuaa"
       },
       "ZRK_API_AGENCY_V4": {
-        "kind": "odata-v4",
+        "kind": "odata-v2",
         "model": "srv/external/ZRK_API_AGENCY_V4",
         "requestTimeout": 60000,
-        
         "[development]": {
           "credentials": {
             "destination": "RJTechSphere",
