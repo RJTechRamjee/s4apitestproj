@@ -27,6 +27,7 @@ modules:
       - name: s4apitestproj-auth
       - name: s4apitestproj-db
       - name: s4apitestproj-destination
+      - name: s4apitestproj-connectivity
 
   - name: s4apitestproj-db-deployer
     type: hdb
@@ -55,4 +56,9 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: destination
+      service-plan: lite
+  - name: s4apitestproj-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
       service-plan: lite
