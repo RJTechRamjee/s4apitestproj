@@ -3,8 +3,8 @@ _out
 *.db
 *.sqlite
 connection.properties
-default-*.json
-.cdsrc-private.json
+# default-*.json
+# .cdsrc-private.json
 gen/
 node_modules/
 target/

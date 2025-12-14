@@ -36,24 +36,10 @@
         "kind": "odata-v2",
         "model": "srv/external/ZRK_API_AGENCY_V4",
         "requestTimeout": 60000,
-        "[development]": {
-          "credentials": {
+        "credentials": {
             "destination": "RJTechSphere",
             "path": "/sap/opu/odata4/sap/zrk_api_agency_v4/srvd_a2x/dmo/ui_agency/0001"
-          }
-        },
-        "[production]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata4/sap/zrk_api_agency_v4/srvd_a2x/dmo/ui_agency/0001"
-          }
-        },
-        "[hybrid]": {
-          "credentials": {
-            "destination": "RJTechSphere",
-            "path": "/sap/opu/odata4/sap/zrk_api_agency_v4/srvd_a2x/dmo/ui_agency/0001"
-          }
-        }
+          }   
       }
     }
   }
