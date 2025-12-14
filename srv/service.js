@@ -12,13 +12,13 @@ module.exports = async (srv) => {
     // This custom handler is only needed for custom logic.
     // For a simple proxy, this handler can be removed entirely.
     // If you keep it for custom logic, here is how you'd call the remote.
-    // try {
+    try {
       // The 'req.query' object already contains the query from the client.
       // We can pass it directly to the remote service.
       return await externalAgencyService.run(req.query)
-    // } catch (error) {
-    //   req.error(500, 'Error during request to remote service')
-    // }
+    } catch (error) {
+      req.error(500, 'Error during request to remote service')
+    }
   })
   // The CAP framework will automatically handle the proxying of requests
   // to the remote 'ZRK_API_AGENCY_V4' service, including all CRUD operations.
