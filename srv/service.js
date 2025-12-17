@@ -1,18 +1,20 @@
 const cds = require('@sap/cds')
 
+// Remote service identifier
+const REMOTE_SERVICE_NAME = 'ZRK_API_AGENCY_V4'
  
 module.exports = async (srv) => {
   // Establish connection to the remote services ONCE.
-  const externalAgencyService = await cds.connect.to('ZRK_API_AGENCY_V4')
+  const externalAgencyService = await cds.connect.to(REMOTE_SERVICE_NAME)
   // const externalTravelService = await cds.connect.to('travel_metadata');
   
   // Log configuration on startup for debugging
-  const config = cds.env.requires['ZRK_API_AGENCY_V4']
+  const config = cds.env.requires[REMOTE_SERVICE_NAME]
   if (config) {
     console.log('[AgencyService] Remote service configuration:', {
       kind: config.kind,
       destination: config.credentials?.destination,
-      path: config.credentials?.path,
+      path: config.credentials?.path ? '[REDACTED]' : undefined,
       requestTimeout: config.requestTimeout
     })
   }
@@ -28,15 +30,16 @@ module.exports = async (srv) => {
       // We can pass it directly to the remote service.
       return await externalAgencyService.run(req.query)
     } catch (error) {
-      // Log the complete error details for troubleshooting
+      // Log error details for troubleshooting (filter sensitive data)
+      const destinationName = config?.credentials?.destination || 'unknown'
       console.error('[AgencyService] Error during remote service call:', {
         message: error.message,
         code: error.code,
         statusCode: error.statusCode,
         syscall: error.syscall,
         errno: error.errno,
-        url: error.reason?.request?.url,
-        baseURL: error.reason?.config?.baseURL,
+        // Mask URL to avoid exposing internal system details
+        urlHost: error.reason?.config?.baseURL ? new URL(error.reason.config.baseURL).host : undefined,
         proxy: error.reason?.config?.proxy
       })
       
@@ -49,7 +52,7 @@ module.exports = async (srv) => {
         troubleshooting = [
           'Verify Cloud Connector is running and connected',
           'Check proxy configuration in .env file',
-          'Ensure destination "RJTechSphere" is properly configured',
+          `Ensure destination "${destinationName}" is properly configured`,
           'Verify the remote system is accessible'
         ]
       } else if (error.code === 'ETIMEDOUT') {
