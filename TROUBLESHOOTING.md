@@ -40,10 +40,13 @@ Error: Error during request to remote service: read ECONNRESET
 Ensure your `.env` file has the correct proxy configuration matching your Cloud Connector:
 
 ```env
-destinations=[{"name":"RJTechSphere","proxyHost":"http://127.0.0.1","proxyPort":"8887","url":"http://rjtechsphere.com:50001"}]
+destinations=[{"name":"RJTechSphere","proxyHost":"127.0.0.1","proxyPort":"8887","url":"http://rjtechsphere.com:50001"}]
 ```
 
-**Important**: The `proxyPort` must match the "Proxy Port" shown in Cloud Connector's Configuration tab (default is 8887).
+**Important Notes**: 
+- The `proxyPort` must match the "Proxy Port" shown in Cloud Connector's Configuration tab (default is 8887).
+- The `proxyHost` should be just the IP address or hostname **without** the `http://` or `https://` protocol prefix.
+- If proxy is not being used (check error logs for `proxy: false`), verify the proxyHost format is correct.
 
 #### Step 3: Verify Destination Configuration
 
