@@ -1,26 +1,25 @@
 const cds = require('@sap/cds')
 
+// Remote service identifier
+const REMOTE_SERVICE_NAME = 'ZRK_API_AGENCY_V4'
  
 module.exports = async (srv) => {
   // Establish connection to the remote services ONCE.
-  const externalAgencyService = await cds.connect.to('ZRK_API_AGENCY_V4')
+  const externalAgencyService = await cds.connect.to(REMOTE_SERVICE_NAME)
   // const externalTravelService = await cds.connect.to('travel_metadata');
+  
+  // Log configuration on startup for debugging
+  const config = cds.env.requires[REMOTE_SERVICE_NAME]
+  if (config) {
+    console.log('[AgencyService] Remote service configuration:', {
+      kind: config.kind,
+      destination: config.credentials?.destination,
+      path: config.credentials?.path ? '[REDACTED]' : undefined,
+      requestTimeout: config.requestTimeout
+    })
+  }
  
-  // Reuse the connection for all event handlers
-  srv.on('READ', 'Agency', async (req) => {
-    // The CAP framework can automatically delegate simple READ requests.
-    // This custom handler is only needed for custom logic.
-    // For a simple proxy, this handler can be removed entirely.
-    // If you keep it for custom logic, here is how you'd call the remote.
-    try {
-      // The 'req.query' object already contains the query from the client.
-      // We can pass it directly to the remote service.
-      return await externalAgencyService.run(req.query)
-    } catch (error) {
-      req.error(500, 'Error during request to remote service')
-    }
-  })
-  // The CAP framework will automatically handle the proxying of requests
-  // to the remote 'ZRK_API_AGENCY_V4' service, including all CRUD operations.
-  // No custom handler is needed for simple delegation.
+  // Let CAP framework handle the delegation automatically
+  // Removing custom handler to use built-in remote service proxying
+  // The framework will automatically handle errors with better retry logic
 }
